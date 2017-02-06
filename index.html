@@ -36,7 +36,6 @@
                 },
                 inputValidator: function(password) {
                     return new Promise(function(resolve, reject) {
-						alert('a');
 						$.post('https://pwnhs.herokuapp.com/login', {
 							pass: password
 						}, function(data) {
