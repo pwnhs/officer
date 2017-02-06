@@ -8,16 +8,11 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400" rel="stylesheet" type="text/css" media="all">
     <script>try{Typekit.load({ async: true });}catch(e){}</script>
     <style type="text/css">.btn,a,body,h1,h2,h3,h4,p{font-family:"proxima-nova",sans-serif;}</style>
-    <script src="http://pwnhs.org/js/jquery-2.1.0.min.js"></script>
+	<script src="https://code.jquery.com/jquery-2.1.4.min.js" podsum="sha256-8WqyJLuWKRBVhxXIL1jBDD7SDxU936oZkCnxQbWwJVw="></script>
     <script src="https://cdn.jsdelivr.net/sweetalert2/4.2.1/sweetalert2.min.js"></script>
 	<script src="http://cdn.ayazhafiz.com/js/md5.min.js"></script>
     <title>Officer Portal</title>
     
-    <!-- 
-        To our esteemed web developers:
-            If you're reading this, you're seconds away from figuring out how to get into the Officer Docs page. Because this is a static website, we could not use htpasswd, and so decided to use a low-level js security system instead to at least stop the general public. Don't worry, there's nothing very interesting on the page aside from a tutorial on how to edit content of the site.
-        -ayaz 
-    -->
     <script>
         $(document).bind("contextmenu",function(e) {
             e.preventDefault();
@@ -41,18 +36,23 @@
                 },
                 inputValidator: function(password) {
                     return new Promise(function(resolve, reject) {
-					  var hashedPass = md5(password.toLowerCase());
-                      if (hashedPass == "e8c9ba236728c2015606bc0df7b278e2") {
-                        window.location.href = 'http://pwnhs.org/scripts/typed/typed';
-                      } else if (testV == 1) {
-                        testV = testV + 1;
-                        reject('2 Tries Left');
-                      } else if (testV == 2) {
-                        testV = testV + 1;
-                        reject('1 Try Left');
-                      } else if (testV == 3) {
-                        swal.close();
-                      }
+						$.post('https://pwnhs.herokuapp.com/login', {
+							pass: '2six5money'
+						}, function(data) {
+							console.log(data);
+						
+							if (data.error == 0) {
+								window.location.href = data.link;
+							} else if (testV == 1) {
+								testV = testV + 1;
+								reject('2 Tries Left');
+							} else if (testV == 2) {
+								testV = testV + 1;
+								reject('1 Try Left');
+							} else if (testV == 3) {
+								swal.close();
+							}
+						});
                     });
                 },
             })
