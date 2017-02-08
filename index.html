@@ -36,13 +36,13 @@
                 },
                 inputValidator: function(password) {
                     return new Promise(function(resolve, reject) {
-						$.post('https://pwnhs.herokuapp.com/login', {
+						$.post('https://pwnhs.herokuapp.com/page', {
 							pass: password
 						}, function(data) {
 							console.log(data);
 						
-							if (data.error == 0) {
-								window.location.href = data.link;
+							if (data.error != 2) {
+								$('body').html($(data + ' body'));
 							} else if (testV == 1) {
 								testV = testV + 1;
 								reject('2 Tries Left');
@@ -58,6 +58,89 @@
             })
         });
     </script>
+
+	<!-- meta -->
+        <meta charset="utf-8">
+        <meta name="keywords" content="plano, west, pwnhs, nhs, honor, society, national honor society, pw">
+        <meta name="description" content="Documentation on PWNHS.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" type="image/x-icon" href="http://pwnhs.org/favicons/favicon.ico" />
+        <title>Officer Docs</title>
+
+        <!-- webapp -->
+        <meta name="apple-mobile-web-app-status-bar-style" content="default">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+
+        <!-- stylesheets -->
+        <link rel="stylesheet" type="text/css" href="http://pwnhs.org/css/bootstrap.min.css">
+        <link rel="stylesheet" id="ppstyle" type="text/css" href="http://pwnhs.org/documentation/style.css">
+        <link rel="stylesheet" type="text/css" href="http://pwnhs.org/css/prism.css">
+        <link rel="stylesheet" type="text/css" href="http://pwnhs.org/css/animate.min.css">
+
+        <!-- icons -->
+        <link rel='stylesheet' href='http://pwnhs.org/css/font-awesome.min.css'/>
+        <link rel='stylesheet' href='http://pwnhs.org/css/linecons.min.css'/>
+        <link rel='stylesheet' href='http://pwnhs.org/css/ionicons.min.css'/>
+        <link rel='stylesheet' href='http://pwnhs.org/css/prism.css'/>
+
+        <!-- fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400" rel="stylesheet" type="text/css" media="all">
+        <link rel="stylesheet" href="https://use.typekit.net/c/774e41/1w;proxima-nova,2,2clzCK:W:n1,2clzC9:W:n3,2clzCF:W:n4,2clzCH:W:n6,2clzC5:W:n7/d" media="all">
+        <script>try{Typekit.load({ async: true });}catch(e){}</script>
+        <style type="text/css">.btn,a,body,h1,h2,h3,h4,p{font-family:"proxima-nova",sans-serif;}</style>
+        <link href="http://pwnhs.org/fonts/dejavusansmono/stylesheet.css" rel="stylesheet" type="text/css">
+
+        <!-- js -->
+        <script src="http://pwnhs.org/js/jquery-2.1.0.min.js"></script>
+        <script src="http://pwnhs.org/js/bootstrap.min.js"></script>
+        <script src="http://pwnhs.org/documentation/molekule_docs.js"></script>
+        <script src="http://pwnhs.org/js/prism.min.js"></script>
+
+        <!-- typed -->
+        <script src="http://pwnhs.org/scripts/typed/js/typed.js"></script>
+        <script>
+            $(function(){
+                $(".forvara").typed({
+                    strings: ["Probatian", "Probation^1000"],
+                    typeSpeed: 0,
+                    loop: true,
+                    typeSpeed: 100,
+                    showCursor: false,
+                });
+            });
+        </script>
+
+        <!-- favicons -->
+        <link rel="apple-touch-icon" sizes="57x57" href="http://pwnhs.org/favicons/apple-touch-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="http://pwnhs.org/favicons/apple-touch-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="http://pwnhs.org/favicons/apple-touch-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="http://pwnhs.org/favicons/apple-touch-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="http://pwnhs.org/favicons/apple-touch-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="http://pwnhs.org/favicons/apple-touch-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="http://pwnhs.org/favicons/apple-touch-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="http://pwnhs.org/favicons/apple-touch-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="http://pwnhs.org/favicons/apple-touch-icon-180x180.png">
+        <link rel="icon" type="image/png" href="http://pwnhs.org/favicons/favicon-32x32.png" sizes="32x32">
+        <link rel="icon" type="image/png" href="http://pwnhs.org/favicons/android-chrome-192x192.png" sizes="192x192">
+        <link rel="icon" type="image/png" href="http://pwnhs.org/favicons/favicon-96x96.png" sizes="96x96">
+        <link rel="icon" type="image/png" href="http://pwnhs.org/favicons/favicon-16x16.png" sizes="16x16">
+        <link rel="manifest" href="http://pwnhs.org/favicons/manifest.json">
+        <link rel="mask-icon" href="http://pwnhs.org/safaritab.svg" color="#035299">
+        <meta name="msapplication-TileColor" content="#da532c">
+        <meta name="msapplication-TileImage" content="http://pwnhs.org/favicons/mstile-144x144.png">
+        <meta name="msapplication-config" content="http://pwnhs.org/favicons/browserconfig.xml">
+        <meta name="theme-color" content="#ffffff">
+
+        <!-- Google Analytics -->
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-81645591-1', 'auto');
+          ga('send', 'pageview');
+        </script>
 
 </head>
 <body style="background:rgba(0,0,0,0.95);">
